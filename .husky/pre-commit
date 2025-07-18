@@ -1,1 +1,3 @@
-##yarn test
+yarn format:check
+yarn lint
+yarn type-check

@@ -20,5 +20,9 @@
 
 ### Project Setup 
 - validation of git commits via githooks, husky, commitlint (conventional commits enforced)..
-
-
+- turborepo for parallel builds and speeding up development
+- 📦 Shared ESLint config (@repo/eslint-config)
+- 📦 Shared TypeScript config (@repo/typescript-config)
+- 🎨 Prettier formatting (consistent code style)
+- 🔧 Pre-commit hooks (format check, lint, type check)
+- ⚡ Turbo scripts for running across all apps

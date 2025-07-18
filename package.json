@@ -13,7 +13,9 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "husky": "^9.1.7",
-    "turbo": "^2.5.5"
+    "turbo": "^2.5.5",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
   },
   "scripts": {
     "prepare": "husky",
@@ -21,6 +23,9 @@
     "dev": "turbo dev",
     "test": "turbo test",
     "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "type-check": "turbo type-check"
   },
   "packageManager": "yarn@1.22.0"
