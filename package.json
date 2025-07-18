@@ -1,16 +1,27 @@
 {
   "name": "proactive-prop-management",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "repository": "git@github.com:umerhussa11n/proactive-prop-management.git",
   "author": "Umer Hussain <umerhussa11n@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "turbo": "^2.5.5"
   },
   "scripts": {
-    "prepare": "husky"
-    }
+    "prepare": "husky",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check"
+  },
+  "packageManager": "yarn@1.22.0"
 }
