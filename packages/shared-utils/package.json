@@ -1,0 +1,12 @@
+{
+  "name": "@repo/shared-utils",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "dependencies": {
+    "@repo/shared-types": "*",
+    "typescript": "^5.0.0",
+    "date-fns": "^2.30.0",
+    "zod": "^3.22.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@repo/shared-types",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "typescript": "^5.0.0"
+  }
+}
