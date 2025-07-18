@@ -1,1 +1,17 @@
-yarn commitlint --edit ${1}
+yarn commitlint --edit ${1} || {
+  echo ""
+  echo "❌ Commit message format is incorrect!"
+  echo ""
+  echo "✅ Use this format: type(scope): description"
+  echo ""
+  echo "Examples:"
+  echo "  feat: add user authentication"
+  echo "  fix: resolve login validation bug"
+  echo "  docs: update README with setup guide"
+  echo ""
+  echo "Valid types: feat, fix, docs, style, refactor, test, chore"
+  echo "Keep description under 72 characters"
+  echo ""
+  echo "📖 Learn more: https://www.conventionalcommits.org/"
+  exit 1
+}
