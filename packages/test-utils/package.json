@@ -1,0 +1,17 @@
+{
+  "name": "@repo/test-utils",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "dependencies": {
+    "@repo/shared-types": "*",
+    "@repo/shared-utils": "*",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.0.0",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "supertest": "^6.3.0",
+    "msw": "^2.0.0"
+  }
+}
