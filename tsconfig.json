@@ -16,7 +16,9 @@
     
     "baseUrl": ".",
     "paths": {
-      "@repo/*": ["packages/*"]
+      "@root/*": ["./*"],    
+      "@repo/*": ["packages/*"],
+      "@apps/*": ["apps/*"] 
     }
   },
   "exclude": ["node_modules", "dist", ".next"]
