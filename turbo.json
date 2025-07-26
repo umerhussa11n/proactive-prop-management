@@ -6,25 +6,27 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
-    "start": {
-      "cache": false,
-      "persistent": true
-    },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "test": {
+    "lint": {
+      "outputs": []
+    },
+    "type-check": {
       "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
+      "outputs": []
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "env": ["NODE_ENV", "CI"]
     },
     "test:watch": {
       "cache": false,
       "persistent": true
     },
-    "lint": {},
-    "type-check": {
-      "dependsOn": ["^build"]
+    "clean": {
+      "cache": false
     }
   }
 }

@@ -1,0 +1,40 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --filter='./apps/*'",
+    "build": "turbo run build --filter='./apps/*'",
+    "lint": "turbo run lint --filter='./apps/*'",
+    "type-check": "turbo run type-check --filter='./apps/*'",
+    "start": "next start",
+    "lint:fix": "next lint --fix",
+    "test": "turbo run test --filter='./apps/*'",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "clean": "turbo run clean --filter='./apps/*'"
+  },
+  "dependencies": {
+    "@repo/shared-types": "*",
+    "@repo/shared-utils": "*",
+    "next": "15.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@repo/test-utils": "*",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.0.0",
+    "jest": "^29.0.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "typescript": "^5.0.0"
+  }
+}
