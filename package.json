@@ -23,7 +23,11 @@
   "scripts": {
     "prepare": "husky",
     "build": "turbo build",
+    "build:frontend": "turbo build --filter=frontend",
+    "build:backend": "turbo build --filter=backend",
     "dev": "turbo dev",
+    "dev:frontend": "turbo dev --filter=frontend",
+    "dev:backend": "turbo dev --filter=backend",
     "test": "turbo test",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
