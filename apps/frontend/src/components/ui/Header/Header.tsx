@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Header = () => {
     return (
-        <header className="bg-blue-600 text-white p-4 flex flex-col items-center gap-3" >
+        <header className="bg-primary text-white p-4 flex flex-col items-center gap-3" >
             <Image
                 src="/images/logo.png"
                 width={100}

@@ -48,4 +48,4 @@ Thumbs.db
 dist/
 build/
 .next/
-.turbo/
+*.turbo/
