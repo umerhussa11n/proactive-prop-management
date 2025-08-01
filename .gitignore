@@ -26,7 +26,10 @@ logs
 *.log
 
 # Editor directories and files
-.vscode/
+.vscode/tasks.json
+.vscode/*.code-workspace
+.vscode/launch.json
+
 .idea/
 *.swp
 *.swo

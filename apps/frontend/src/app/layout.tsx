@@ -21,7 +21,9 @@ export default function RootLayout({
       
       <body className={inter.className}>
         <Header />
-        <main className="container mx-auto px-4 py-8 border border-red">
+        
+        <main className="container mx-auto px-4 py-8 border border-white-700">
+          <div className='border border-red-50'>Main Test</div>
           {children}
         </main>
         <Footer />
