@@ -1,64 +1,129 @@
 import React from 'react';
+import {
+  Certificate,
+  CertificateStats,
+  CertificateTypeInfo,
+  CertificateType,
+  CertificateStatus,
+  CertificateRating
+} from '../../types/certificate';
 
 const CertificatesPage = () => {
   console.log('📜 Certificates page rendered!');
 
-  const certificates = [
+  const certificates: Certificate[] = [
     {
       id: 1,
-      type: 'EPC Certificate',
+      type: CertificateType.EPC_CERTIFICATE,
       property: 'Sunset Apartments Building A',
+      propertyId: 1,
       issueDate: '2023-06-15',
       expiryDate: '2033-06-15',
-      rating: 'B',
-      status: 'Valid',
-      documentUrl: '#'
+      rating: CertificateRating.B,
+      status: CertificateStatus.VALID,
+      documentUrl: '#',
+      issuer: 'EPC Solutions Ltd',
+      cost: 150
     },
     {
       id: 2,
-      type: 'Gas Safety Certificate',
+      type: CertificateType.GAS_SAFETY_CERTIFICATE,
       property: 'Green Valley Townhouses',
+      propertyId: 2,
       issueDate: '2024-01-20',
       expiryDate: '2025-01-20',
-      rating: 'Pass',
-      status: 'Valid',
-      documentUrl: '#'
+      rating: CertificateRating.PASS,
+      status: CertificateStatus.VALID,
+      documentUrl: '#',
+      issuer: 'SafeGas Engineers',
+      cost: 75
     },
     {
       id: 3,
-      type: 'Fire Safety Certificate',
+      type: CertificateType.FIRE_SAFETY_CERTIFICATE,
       property: 'City Center Office Block',
+      propertyId: 3,
       issueDate: '2023-03-10',
       expiryDate: '2024-03-10',
-      rating: 'Pass',
-      status: 'Expiring Soon',
-      documentUrl: '#'
+      rating: CertificateRating.PASS,
+      status: CertificateStatus.EXPIRING_SOON,
+      documentUrl: '#',
+      issuer: 'Fire Safety Experts',
+      cost: 200,
+      reminderSent: true
     },
     {
       id: 4,
-      type: 'Electrical Safety Certificate',
+      type: CertificateType.ELECTRICAL_SAFETY_CERTIFICATE,
       property: 'Sunset Apartments Building A',
+      propertyId: 1,
       issueDate: '2022-11-05',
       expiryDate: '2024-11-05',
-      rating: 'Pass',
-      status: 'Valid',
-      documentUrl: '#'
+      rating: CertificateRating.PASS,
+      status: CertificateStatus.VALID,
+      documentUrl: '#',
+      issuer: 'ElectroSafe Ltd',
+      cost: 120
     }
   ];
 
-  const stats = [
+  const stats: CertificateStats[] = [
     { label: 'Total Certificates', value: '89', icon: '📜', color: 'text-primary-600' },
     { label: 'Valid Certificates', value: '76', icon: '✅', color: 'text-success-600' },
     { label: 'Expiring Soon', value: '8', icon: '⚠️', color: 'text-yellow-600' },
     { label: 'Expired', value: '5', icon: '❌', color: 'text-danger-600' },
   ];
 
-  const certificateTypes = [
-    { name: 'EPC Certificate', count: 25, color: 'bg-blue-100 text-blue-800' },
-    { name: 'Gas Safety', count: 22, color: 'bg-green-100 text-green-800' },
-    { name: 'Fire Safety', count: 18, color: 'bg-red-100 text-red-800' },
-    { name: 'Electrical Safety', count: 24, color: 'bg-yellow-100 text-yellow-800' },
+  const certificateTypes: CertificateTypeInfo[] = [
+    {
+      name: CertificateType.EPC_CERTIFICATE,
+      count: 25,
+      color: 'bg-blue-100 text-blue-800',
+      validityPeriod: 120, // 10 years
+      isRequired: true
+    },
+    {
+      name: CertificateType.GAS_SAFETY_CERTIFICATE,
+      count: 22,
+      color: 'bg-green-100 text-green-800',
+      validityPeriod: 12, // 1 year
+      isRequired: true
+    },
+    {
+      name: CertificateType.FIRE_SAFETY_CERTIFICATE,
+      count: 18,
+      color: 'bg-red-100 text-red-800',
+      validityPeriod: 12, // 1 year
+      isRequired: true
+    },
+    {
+      name: CertificateType.ELECTRICAL_SAFETY_CERTIFICATE,
+      count: 24,
+      color: 'bg-yellow-100 text-yellow-800',
+      validityPeriod: 60, // 5 years
+      isRequired: true
+    },
   ];
+
+  // Helper function to get status styling using enum values
+  const getStatusStyle = (status: CertificateStatus): string => {
+    switch (status) {
+      case CertificateStatus.VALID:
+        return 'bg-success-100 text-success-800';
+      case CertificateStatus.EXPIRING_SOON:
+        return 'bg-yellow-100 text-yellow-800';
+      case CertificateStatus.EXPIRED:
+        return 'bg-danger-100 text-danger-800';
+      case CertificateStatus.PENDING_RENEWAL:
+        return 'bg-blue-100 text-blue-800';
+      case CertificateStatus.UNDER_REVIEW:
+        return 'bg-neutral-100 text-neutral-800';
+      case CertificateStatus.REJECTED:
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-neutral-100 text-neutral-800';
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -110,9 +175,17 @@ const CertificatesPage = () => {
           <div className="p-6 space-y-4">
             {certificateTypes.map((type, index) => (
               <div key={index} className="flex justify-between items-center">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${type.color}`}>
-                  {type.name}
-                </span>
+                <div className="flex-1">
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${type.color}`}>
+                    {type.name}
+                  </span>
+                  {type.isRequired && (
+                    <span className="ml-2 text-xs text-red-600">Required</span>
+                  )}
+                  <div className="text-xs text-neutral-500 mt-1">
+                    Valid for {type.validityPeriod} months
+                  </div>
+                </div>
                 <span className="text-neutral-600 font-medium">{type.count}</span>
               </div>
             ))}
@@ -141,7 +214,9 @@ const CertificatesPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
                         <div className="text-sm font-medium text-neutral-900">{cert.type}</div>
-                        <div className="text-sm text-neutral-500">Rating: {cert.rating}</div>
+                        <div className="text-sm text-neutral-500">
+                          Rating: {cert.rating} | Issuer: {cert.issuer}
+                        </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">
@@ -151,13 +226,7 @@ const CertificatesPage = () => {
                       {cert.expiryDate}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                        cert.status === 'Valid'
-                          ? 'bg-success-100 text-success-800'
-                          : cert.status === 'Expiring Soon'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : 'bg-danger-100 text-danger-800'
-                      }`}>
+                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusStyle(cert.status)}`}>
                         {cert.status}
                       </span>
                     </td>
