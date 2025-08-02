@@ -3,15 +3,15 @@
 ## 🔥 Most Critical Areas to Test (Priority Order)
 ```
         ╭─────────────╮
-       ╱   E2E Tests   ╲    ← Few, expensive, high confidence
+       ╱   E2E Tests   ╲    ← Few, expensive, high confidence (Cypress)
       ╱   (Critical    ╲
      ╱   User Flows)   ╲
     ╱─────────────────╲
-   ╱  Integration Tests ╲   ← Some, moderate cost
+   ╱  Integration Tests ╲   ← Some, moderate cost (Jest, RTL)
   ╱  (Components +     ╲
  ╱   API/State)        ╲
 ╱─────────────────────╲
-│    Unit Tests        │   ← Many, cheap, fast
+│    Unit Tests        │   ← Many, cheap, fast (Jest, RTL)
 │ (Utils, Hooks, Logic)│
 ╰─────────────────────╯
 ```
