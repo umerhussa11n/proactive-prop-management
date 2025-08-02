@@ -1,17 +1,54 @@
 import React from 'react';
+import {
+  ReportCategory,
+  ReportStats,
+  ReportType,
+  ReportFormat,
+  ReportStatus
+} from '../../types/report';
 
 const ReportsPage = () => {
   console.log('📊 Reports page rendered!');
 
-  const reportCategories = [
+  const reportCategories: ReportCategory[] = [
     {
       title: 'Financial Reports',
       description: 'Revenue, expenses, and profit analysis',
       icon: '💰',
       reports: [
-        { name: 'Monthly Revenue Report', lastGenerated: '2024-02-01', format: 'PDF' },
-        { name: 'Expense Analysis', lastGenerated: '2024-01-28', format: 'Excel' },
-        { name: 'Profit & Loss Statement', lastGenerated: '2024-01-31', format: 'PDF' }
+        {
+          id: 1,
+          name: 'Monthly Revenue Report',
+          type: ReportType.FINANCIAL,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-02-01',
+          createdBy: 'System',
+          fileSize: 2048576, // 2MB
+          downloadUrl: '#'
+        },
+        {
+          id: 2,
+          name: 'Expense Analysis',
+          type: ReportType.FINANCIAL,
+          format: ReportFormat.EXCEL,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-01-28',
+          createdBy: 'John Doe',
+          fileSize: 1536000, // 1.5MB
+          downloadUrl: '#'
+        },
+        {
+          id: 3,
+          name: 'Profit & Loss Statement',
+          type: ReportType.FINANCIAL,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-01-31',
+          createdBy: 'System',
+          fileSize: 1024000, // 1MB
+          downloadUrl: '#'
+        }
       ]
     },
     {
@@ -19,9 +56,35 @@ const ReportsPage = () => {
       description: 'Maintenance activities and costs',
       icon: '🔧',
       reports: [
-        { name: 'Maintenance Summary', lastGenerated: '2024-02-02', format: 'PDF' },
-        { name: 'Vendor Performance', lastGenerated: '2024-01-29', format: 'Excel' },
-        { name: 'Cost Analysis', lastGenerated: '2024-01-30', format: 'PDF' }
+        {
+          id: 4,
+          name: 'Maintenance Summary',
+          type: ReportType.MAINTENANCE,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-02-02',
+          createdBy: 'System',
+          downloadUrl: '#'
+        },
+        {
+          id: 5,
+          name: 'Vendor Performance',
+          type: ReportType.MAINTENANCE,
+          format: ReportFormat.EXCEL,
+          status: ReportStatus.GENERATING,
+          lastGenerated: '2024-01-29',
+          createdBy: 'Jane Smith'
+        },
+        {
+          id: 6,
+          name: 'Cost Analysis',
+          type: ReportType.MAINTENANCE,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-01-30',
+          createdBy: 'System',
+          downloadUrl: '#'
+        }
       ]
     },
     {
@@ -29,9 +92,35 @@ const ReportsPage = () => {
       description: 'Tenant occupancy and vacancy trends',
       icon: '👥',
       reports: [
-        { name: 'Occupancy Rate Report', lastGenerated: '2024-02-01', format: 'PDF' },
-        { name: 'Vacancy Analysis', lastGenerated: '2024-01-31', format: 'Excel' },
-        { name: 'Tenant Turnover', lastGenerated: '2024-01-28', format: 'PDF' }
+        {
+          id: 7,
+          name: 'Occupancy Rate Report',
+          type: ReportType.OCCUPANCY,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-02-01',
+          createdBy: 'System',
+          downloadUrl: '#'
+        },
+        {
+          id: 8,
+          name: 'Vacancy Analysis',
+          type: ReportType.OCCUPANCY,
+          format: ReportFormat.EXCEL,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-01-31',
+          createdBy: 'John Doe',
+          downloadUrl: '#'
+        },
+        {
+          id: 9,
+          name: 'Tenant Turnover',
+          type: ReportType.OCCUPANCY,
+          format: ReportFormat.PDF,
+          status: ReportStatus.SCHEDULED,
+          lastGenerated: '2024-01-28',
+          createdBy: 'System'
+        }
       ]
     },
     {
@@ -39,19 +128,69 @@ const ReportsPage = () => {
       description: 'Certificate status and compliance tracking',
       icon: '📋',
       reports: [
-        { name: 'Certificate Expiry Report', lastGenerated: '2024-02-02', format: 'PDF' },
-        { name: 'Compliance Status', lastGenerated: '2024-01-30', format: 'Excel' },
-        { name: 'Inspection Schedule', lastGenerated: '2024-01-29', format: 'PDF' }
+        {
+          id: 10,
+          name: 'Certificate Expiry Report',
+          type: ReportType.COMPLIANCE,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-02-02',
+          createdBy: 'System',
+          downloadUrl: '#'
+        },
+        {
+          id: 11,
+          name: 'Compliance Status',
+          type: ReportType.COMPLIANCE,
+          format: ReportFormat.EXCEL,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-01-30',
+          createdBy: 'Jane Smith',
+          downloadUrl: '#'
+        },
+        {
+          id: 12,
+          name: 'Inspection Schedule',
+          type: ReportType.COMPLIANCE,
+          format: ReportFormat.PDF,
+          status: ReportStatus.COMPLETED,
+          lastGenerated: '2024-01-29',
+          createdBy: 'System',
+          downloadUrl: '#'
+        }
       ]
     }
   ];
 
-  const quickStats = [
+  const quickStats: ReportStats[] = [
     { label: 'Reports Generated', value: '247', icon: '📊', color: 'text-primary-600' },
     { label: 'This Month', value: '23', icon: '📅', color: 'text-success-600' },
     { label: 'Scheduled Reports', value: '12', icon: '⏰', color: 'text-yellow-600' },
     { label: 'Export Formats', value: '3', icon: '📁', color: 'text-blue-600' },
   ];
+
+  // Helper function to get status styling
+  const getStatusStyle = (status: ReportStatus): string => {
+    switch (status) {
+      case ReportStatus.COMPLETED:
+        return 'bg-success-100 text-success-800';
+      case ReportStatus.GENERATING:
+        return 'bg-blue-100 text-blue-800';
+      case ReportStatus.SCHEDULED:
+        return 'bg-yellow-100 text-yellow-800';
+      case ReportStatus.FAILED:
+        return 'bg-danger-100 text-danger-800';
+      default:
+        return 'bg-neutral-100 text-neutral-800';
+    }
+  };
+
+  // Helper function to format file size
+  const formatFileSize = (bytes?: number): string => {
+    if (!bytes) return '';
+    const mb = bytes / (1024 * 1024);
+    return `${mb.toFixed(1)} MB`;
+  };
 
   return (
     <div className="space-y-6">
@@ -116,19 +255,34 @@ const ReportsPage = () => {
             {/* Reports List */}
             <div className="p-6">
               <div className="space-y-3">
-                {category.reports.map((report, reportIndex) => (
-                  <div key={reportIndex} className="flex items-center justify-between p-3 rounded-lg hover:bg-neutral-50 transition-colors">
+                {category.reports.map((report) => (
+                  <div key={report.id} className="flex items-center justify-between p-3 rounded-lg hover:bg-neutral-50 transition-colors">
                     <div className="flex-1">
                       <h4 className="text-sm font-medium text-neutral-900">{report.name}</h4>
-                      <p className="text-xs text-neutral-500">Last generated: {report.lastGenerated}</p>
+                      <div className="flex items-center space-x-2 text-xs text-neutral-500 mt-1">
+                        <span>Last generated: {report.lastGenerated}</span>
+                        {report.fileSize && (
+                          <span>• {formatFileSize(report.fileSize)}</span>
+                        )}
+                        <span>• By: {report.createdBy}</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-3">
+                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusStyle(report.status)}`}>
+                        {report.status}
+                      </span>
                       <span className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded">
                         {report.format}
                       </span>
-                      <button className="text-primary-600 hover:text-primary-900 text-sm font-medium">
-                        Generate
-                      </button>
+                      {report.status === ReportStatus.COMPLETED ? (
+                        <button className="text-primary-600 hover:text-primary-900 text-sm font-medium">
+                          Download
+                        </button>
+                      ) : (
+                        <button className="text-primary-600 hover:text-primary-900 text-sm font-medium">
+                          Generate
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
