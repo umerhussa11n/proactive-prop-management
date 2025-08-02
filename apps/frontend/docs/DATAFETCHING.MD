@@ -1,3 +1,13 @@
+### Our Approach
+ - Frontend (React Query) → Next.js API Routes → External Node.js Backend (Next.js API Routes as Proxy/BFF)
+
+ ## Benifits:
+  - 🔒 Security: Hide backend URLs and API keys from client
+  - 🎨 Data Transformation: Shape data specifically for frontend needs
+  - ⚡ Performance: Can implement caching at API route level
+  - 🛡️ Error Handling: Centralized error handling and logging
+  - 🔧 Flexibility: Easy to switch backends or add multiple data sources
+
 ### 📡 Data Fetching Solutions
 ## 1. React Query / TanStack Query ⭐ (Choice for this App)
  - Server state management library that handles caching, synchronization, and updates.
