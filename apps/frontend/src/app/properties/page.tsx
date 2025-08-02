@@ -1,17 +1,17 @@
 import React from 'react';
-
+import { Property, PropertyStatus, PropertyType } from '../../types/property';
 const PropertiesPage = () => {
   console.log('🏘️ Properties page rendered!');
 
-  const properties = [
+  const properties : Property[] = [
     {
       id: 1,
       name: 'Sunset Apartments Building A',
       address: '123 Oak Street, Manchester',
       units: 24,
       occupied: 22,
-      type: 'Apartment Complex',
-      status: 'Active',
+      type: PropertyType.APARTMENT_COMPLEX,
+      status: PropertyStatus.ACTIVE,
       lastInspection: '2024-01-15',
       nextInspection: '2024-04-15'
     },
@@ -21,8 +21,8 @@ const PropertiesPage = () => {
       address: '456 Pine Avenue, Liverpool',
       units: 12,
       occupied: 11,
-      type: 'Townhouse',
-      status: 'Active',
+      type: PropertyType.TOWNHOUSE,
+      status: PropertyStatus.ACTIVE,
       lastInspection: '2024-01-20',
       nextInspection: '2024-04-20'
     },
@@ -32,8 +32,8 @@ const PropertiesPage = () => {
       address: '789 High Street, Birmingham',
       units: 8,
       occupied: 7,
-      type: 'Commercial',
-      status: 'Under Maintenance',
+      type: PropertyType.COMMERCIAL,
+      status: PropertyStatus.UNDER_MAINTENANCE,
       lastInspection: '2024-01-10',
       nextInspection: '2024-04-10'
     }
