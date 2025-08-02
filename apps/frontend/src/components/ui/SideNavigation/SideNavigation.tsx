@@ -1,11 +1,13 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface NavItem {
   href: string;
   label: string;
   icon: React.ReactNode;
-  active?: boolean;
 }
 
 interface SideNavigationProps {
@@ -13,11 +15,12 @@ interface SideNavigationProps {
 }
 
 export default function SideNavigation({ className = '' }: SideNavigationProps) {
+  const pathname = usePathname();
+
   const navigationItems: NavItem[] = [
     {
       href: '/',
       label: 'Dashboard',
-      active: true,
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
@@ -62,6 +65,14 @@ export default function SideNavigation({ className = '' }: SideNavigationProps) 
     }
   ];
 
+  // Helper function to check if a nav item is active
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
   return (
     <aside className={`bg-neutral-900 border-r border-neutral-700 ${className}`}>
       <div className="h-full flex flex-col">
@@ -87,15 +98,19 @@ export default function SideNavigation({ className = '' }: SideNavigationProps) 
               key={item.href}
               href={item.href}
               className={`
-                flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
-                ${item.active
-                  ? 'bg-primary-600 text-white shadow-lg'
+                flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200
+                ${isActive(item.href)
+                  ? 'bg-primary-600 text-white shadow-lg ring-1 ring-primary-500/50'
                   : 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                 }
               `}
             >
               {item.icon}
               <span>{item.label}</span>
+              {/* Active indicator */}
+              {isActive(item.href) && (
+                <div className="ml-auto w-2 h-2 bg-white rounded-full opacity-75" />
+              )}
             </Link>
           ))}
         </nav>
