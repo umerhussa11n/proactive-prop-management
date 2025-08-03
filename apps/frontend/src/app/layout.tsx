@@ -1,5 +1,6 @@
 import React from 'react';
 import './globals.css'
+import { Providers } from './providers'
 import { Inter } from 'next/font/google'
 import Header from '@components/ui/Header'
 import Footer from "@components/ui/Footer"
@@ -21,20 +22,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${inter.className} h-full bg-neutral-50 antialiased`}>
-        <div className="h-full flex">
-          {/* Left Sidebar Navigation */}
-          <SideNavigation className="w-64 flex-shrink-0" />
+        <Providers>
+          <div className="h-full flex">
+            {/* Left Sidebar Navigation */}
+            <SideNavigation className="w-64 flex-shrink-0" />
 
-          {/* Main Content Area */}
-          <div className="flex-1 flex flex-col min-w-0">
-            {/* <Header /> */}
-            <MainLayout>
-              {children}
-            </MainLayout>
-            <Footer />
+            {/* Main Content Area */}
+            <div className="flex-1 flex flex-col min-w-0">
+              {/* <Header /> */}
+              <MainLayout>
+                {children}
+              </MainLayout>
+              <Footer />
+            </div>
           </div>
-        </div>
+        </Providers>
       </body>
+
     </html>
   )
 }
